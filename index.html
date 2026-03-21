@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ayush Kumar Mishra | DevOps Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+color:white;
+transition:.4s
+}
+
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;width:100%;
+backdrop-filter:blur(12px);
+background:rgba(255,255,255,.05);
+display:flex;justify-content:space-between;
+padding:20px 10%;z-index:999
+}
+
+nav a{color:white;text-decoration:none;margin-left:25px}
+nav a:hover{color:#00f7ff}
+
+/* HERO */
+header{
+height:100vh;display:flex;justify-content:center;align-items:center;text-align:center
+}
+
+.glass{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+padding:60px;border-radius:20px
+}
+
+.typing{color:#00f7ff;font-weight:600}
+
+button{
+padding:12px 25px;border:none;border-radius:12px;
+background:#00f7ff;font-weight:bold;cursor:pointer
+}
+
+.section{padding:120px 10%}
+
+.card{
+background:rgba(255,255,255,.07);
+backdrop-filter:blur(12px);
+border-radius:16px;padding:30px;margin-top:20px
+}
+
+/* EXPERIENCE TIMELINE */
+.timeline{
+border-left:2px solid #00f7ff;
+padding-left:30px
+}
+
+.timeline div{margin-bottom:25px}
+
+/* SKILLS */
+.skill{margin-top:15px}
+
+.progress{height:8px;background:#222;border-radius:10px;overflow:hidden}
+
+.progress span{display:block;height:100%;background:#00f7ff}
+
+/* PROJECT GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+
+.project{padding:25px;border-radius:15px;background:rgba(255,255,255,.05)}
+
+.project:hover{background:rgba(255,255,255,.15)}
+
+/* CONTACT FORM */
+input,textarea{
+width:100%;padding:12px;margin-top:10px;border:none;border-radius:10px
+}
+
+form button{margin-top:15px}
+
+.dark{background:#111}
+
+footer{text-align:center;padding:40px;opacity:.6}
+
+/* FLOATING ICONS */
+.floating-icons img{
+position:fixed;width:40px;opacity:.2;animation:float 10s infinite linear
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-40px)}
+100%{transform:translateY(0)}
+}
+
+</style>
+</head>
+<body>
+
+<!-- FLOATING DEVOPS ICONS -->
+
+<div class="floating-icons">
+<img src="https://skillicons.dev/icons?i=docker" style="top:20%;left:5%">
+<img src="https://skillicons.dev/icons?i=kubernetes" style="top:70%;left:10%">
+<img src="https://skillicons.dev/icons?i=aws" style="top:40%;right:5%">
+<img src="https://skillicons.dev/icons?i=linux" style="top:80%;right:10%">
+</div>
+
+<!-- NAVBAR -->
+
+<nav>
+<div><strong>Ayush</strong></div>
+<div>
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+<button onclick="toggleMode()">🌙</button>
+</div>
+</nav>
+
+<!-- HERO -->
+
+<header>
+<div class="glass">
+<h1>Hi 👋 I'm Ayush Kumar Mishra</h1>
+<h3 class="typing"></h3>
+<br>
+<button onclick="scrollNext()">Explore Portfolio</button>
+<br><br>
+<a href="resume.pdf" download>
+<button>Download Resume</button>
+</a>
+</div>
+</header>
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+<h2>About Me</h2>
+<div class="card">
+Software Engineer with 2+ years of experience passionate about DevOps, Automation & Cloud Infrastructure.
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+
+<section class="section" id="experience">
+<h2>Experience</h2>
+<div class="timeline">
+<div>
+<h3>Software Engineer</h3>
+<p>Working on production support, backend fixes, and DevOps automation workflows.</p>
+</div>
+
+<div>
+<h3>DevOps Learning Journey</h3>
+<p>Hands-on experience with Docker, Kubernetes, CI/CD pipelines and monitoring tools.</p>
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+
+<section class="section" id="projects">
+<h2>Live GitHub Projects</h2>
+<div id="repos" class="grid"></div>
+</section>
+
+<!-- SKILLS -->
+
+<section class="section" id="skills">
+<h2>Skill Progress</h2>
+
+<div class="skill">Docker
+<div class="progress"><span style="width:85%"></span></div>
+</div>
+
+<div class="skill">Kubernetes
+<div class="progress"><span style="width:75%"></span></div>
+</div>
+
+<div class="skill">Linux
+<div class="progress"><span style="width:90%"></span></div>
+</div>
+
+<div class="skill">CI/CD
+<div class="progress"><span style="width:80%"></span></div>
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+<h2>Contact Me</h2>
+
+<div class="card">
+<form action="mailto:ayushmishra9615@gmail.com" method="post" enctype="text/plain">
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<textarea rows="5" placeholder="Your Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+<br>
+
+<a href="https://github.com/aayushkumarmishra">GitHub</a>
+<br>
+<a href="https://linkedin.com">LinkedIn</a>
+
+<br><br>
+
+<img src="https://komarev.com/ghpvc/?username=aayushkumarmishra&label=Visitors&color=0e75b6" />
+
+</div>
+</section>
+
+<footer>
+Live on GitHub Pages 🚀 | Built by Ayush Kumar Mishra
+</footer>
+
+<script>
+
+const roles=["DevOps Engineer","Automation Lover","Cloud Enthusiast","CI/CD Specialist"];
+let i=0;
+
+function typing(){
+document.querySelector(".typing").innerText=roles[i];
+i=(i+1)%roles.length
+}
+
+setInterval(typing,2000)
+
+function scrollNext(){window.scrollTo({top:window.innerHeight,behavior:"smooth"})}
+
+function toggleMode(){document.body.classList.toggle("dark")}
+
+// GitHub repos auto fetch
+
+fetch("https://api.github.com/users/aayushkumarmishra/repos")
+.then(res=>res.json())
+.then(data=>{
+let container=document.getElementById("repos");
+
+data.slice(0,6).forEach(repo=>{
+container.innerHTML+=`
+<div class="project">
+<h3>${repo.name}</h3>
+<p>${repo.description || "DevOps / Software Project"}</p>
+<a href="${repo.html_url}" target="_blank">View Repo</a>
+</div>`
+})
+})
+
+</script>
+
+</body>
+</html>
