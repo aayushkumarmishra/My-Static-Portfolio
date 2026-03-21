@@ -12,8 +12,20 @@
 
 body{
 background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
-color:white;
-transition:.4s
+color:white;transition:.4s
+}
+
+/* LOADER */
+
+
+/* SCROLL PROGRESS BAR */
+#progress{
+position:fixed;
+top:0;left:0;
+height:4px;
+background:#00f7ff;
+width:0%;
+z-index:999
 }
 
 /* NAVBAR */
@@ -22,16 +34,40 @@ position:fixed;
 top:0;width:100%;
 backdrop-filter:blur(12px);
 background:rgba(255,255,255,.05);
-display:flex;justify-content:space-between;
-padding:20px 10%;z-index:999
+display:flex;
+justify-content:space-between;
+padding:20px 10%;
+z-index:999
 }
 
-nav a{color:white;text-decoration:none;margin-left:25px}
+nav ul{
+display:flex;
+list-style:none
+}
+
+nav ul li{
+margin-left:25px
+}
+
+nav a{
+color:white;text-decoration:none
+}
+
 nav a:hover{color:#00f7ff}
+
+.menu-btn{
+display:none;
+font-size:24px;
+cursor:pointer
+}
 
 /* HERO */
 header{
-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center
 }
 
 .glass{
@@ -47,7 +83,17 @@ padding:12px 25px;border:none;border-radius:12px;
 background:#00f7ff;font-weight:bold;cursor:pointer
 }
 
-.section{padding:120px 10%}
+.section{
+padding:120px 10%;
+opacity:0;
+transform:translateY(50px);
+transition:.6s
+}
+
+.section.show{
+opacity:1;
+transform:translateY(0)
+}
 
 .card{
 background:rgba(255,255,255,.07);
@@ -55,78 +101,78 @@ backdrop-filter:blur(12px);
 border-radius:16px;padding:30px;margin-top:20px
 }
 
-/* EXPERIENCE TIMELINE */
-.timeline{
-border-left:2px solid #00f7ff;
-padding-left:30px
-}
+.timeline{border-left:2px solid #00f7ff;padding-left:30px}
 
-.timeline div{margin-bottom:25px}
-
-/* SKILLS */
 .skill{margin-top:15px}
 
-.progress{height:8px;background:#222;border-radius:10px;overflow:hidden}
+.progress{height:8px;background:#222;border-radius:10px}
 
 .progress span{display:block;height:100%;background:#00f7ff}
 
-/* PROJECT GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px
+}
 
 .project{padding:25px;border-radius:15px;background:rgba(255,255,255,.05)}
 
 .project:hover{background:rgba(255,255,255,.15)}
 
-/* CONTACT FORM */
 input,textarea{
 width:100%;padding:12px;margin-top:10px;border:none;border-radius:10px
 }
-
-form button{margin-top:15px}
 
 .dark{background:#111}
 
 footer{text-align:center;padding:40px;opacity:.6}
 
-/* FLOATING ICONS */
-.floating-icons img{
-position:fixed;width:40px;opacity:.2;animation:float 10s infinite linear
+/* MOBILE MENU */
+@media(max-width:768px){
+
+.menu-btn{display:block}
+
+nav ul{
+position:absolute;
+top:70px;
+right:0;
+background:#111;
+flex-direction:column;
+width:200px;
+display:none
 }
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-40px)}
-100%{transform:translateY(0)}
+nav ul.show{
+display:flex
+}
+
+nav ul li{
+padding:15px
+}
+
 }
 
 </style>
 </head>
 <body>
 
-<!-- FLOATING DEVOPS ICONS -->
 
-<div class="floating-icons">
-<img src="https://skillicons.dev/icons?i=docker" style="top:20%;left:5%">
-<img src="https://skillicons.dev/icons?i=kubernetes" style="top:70%;left:10%">
-<img src="https://skillicons.dev/icons?i=aws" style="top:40%;right:5%">
-<img src="https://skillicons.dev/icons?i=linux" style="top:80%;right:10%">
-</div>
 
-<!-- NAVBAR -->
+<div id="progress"></div>
 
 <nav>
 <div><strong>Ayush</strong></div>
-<div>
-<a href="#about">About</a>
-<a href="#experience">Experience</a>
-<a href="#projects">Projects</a>
-<a href="#skills">Skills</a>
-<a href="#contact">Contact</a>
-<button onclick="toggleMode()">🌙</button>
-</div>
-</nav>
 
-<!-- HERO -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<ul id="menu">
+<li><a href="#about">About</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><button onclick="toggleMode()">🌙</button></li>
+</ul>
+</nav>
 
 <header>
 <div class="glass">
@@ -141,40 +187,27 @@ position:fixed;width:40px;opacity:.2;animation:float 10s infinite linear
 </div>
 </header>
 
-<!-- ABOUT -->
-
 <section class="section" id="about">
 <h2>About Me</h2>
 <div class="card">
-Software Engineer with 2+ years of experience passionate about DevOps, Automation & Cloud Infrastructure.
+Software Engineer with 2+ years experience in DevOps automation and cloud infrastructure.
 </div>
 </section>
-
-<!-- EXPERIENCE -->
 
 <section class="section" id="experience">
 <h2>Experience</h2>
 <div class="timeline">
 <div>
 <h3>Software Engineer</h3>
-<p>Working on production support, backend fixes, and DevOps automation workflows.</p>
-</div>
-
-<div>
-<h3>DevOps Learning Journey</h3>
-<p>Hands-on experience with Docker, Kubernetes, CI/CD pipelines and monitoring tools.</p>
+<p>Worked on production support, backend fixes & deployment automation.</p>
 </div>
 </div>
 </section>
-
-<!-- PROJECTS -->
 
 <section class="section" id="projects">
 <h2>Live GitHub Projects</h2>
 <div id="repos" class="grid"></div>
 </section>
-
-<!-- SKILLS -->
 
 <section class="section" id="skills">
 <h2>Skill Progress</h2>
@@ -191,40 +224,17 @@ Software Engineer with 2+ years of experience passionate about DevOps, Automatio
 <div class="progress"><span style="width:90%"></span></div>
 </div>
 
-<div class="skill">CI/CD
-<div class="progress"><span style="width:80%"></span></div>
-</div>
-
 </section>
-
-<!-- CONTACT -->
 
 <section class="section" id="contact">
 <h2>Contact Me</h2>
-
 <div class="card">
-<form action="mailto:ayushmishra9615@gmail.com" method="post" enctype="text/plain">
-
-<input type="text" placeholder="Your Name" required>
-
-<input type="email" placeholder="Your Email" required>
-
-<textarea rows="5" placeholder="Your Message"></textarea>
-
-<button type="submit">Send Message</button>
-
+<form action="mailto:ayushmishra9615@gmail.com" method="post">
+<input placeholder="Your Name">
+<input placeholder="Your Email">
+<textarea rows="5" placeholder="Message"></textarea>
+<button>Send Message</button>
 </form>
-
-<br>
-
-<a href="https://github.com/aayushkumarmishra">GitHub</a>
-<br>
-<a href="https://linkedin.com">LinkedIn</a>
-
-<br><br>
-
-<img src="https://komarev.com/ghpvc/?username=aayushkumarmishra&label=Visitors&color=0e75b6" />
-
 </div>
 </section>
 
@@ -234,32 +244,63 @@ Live on GitHub Pages 🚀 | Built by Ayush Kumar Mishra
 
 <script>
 
-const roles=["DevOps Engineer","Automation Lover","Cloud Enthusiast","CI/CD Specialist"];
-let i=0;
 
-function typing(){
-document.querySelector(".typing").innerText=roles[i];
-i=(i+1)%roles.length
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("show");
 }
 
-setInterval(typing,2000)
+function toggleMode(){
+document.body.classList.toggle("dark");
+}
 
-function scrollNext(){window.scrollTo({top:window.innerHeight,behavior:"smooth"})}
+function scrollNext(){
+window.scrollTo({top:window.innerHeight,behavior:"smooth"});
+}
 
-function toggleMode(){document.body.classList.toggle("dark")}
+// typing animation
 
-// GitHub repos auto fetch
+const roles=["DevOps Engineer","Automation Lover","Cloud Enthusiast"];
+let i=0;
+
+setInterval(()=>{
+document.querySelector(".typing").innerText=roles[i];
+i=(i+1)%roles.length;
+},2000);
+
+// scroll progress
+
+window.onscroll=()=>{
+let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+let scrolled=(winScroll/height)*100;
+document.getElementById("progress").style.width=scrolled+"%";
+}
+
+// reveal animation
+
+const sections=document.querySelectorAll(".section");
+
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-100){
+sec.classList.add("show")
+}
+})
+})
+
+// github repos fetch
 
 fetch("https://api.github.com/users/aayushkumarmishra/repos")
 .then(res=>res.json())
 .then(data=>{
 let container=document.getElementById("repos");
 
-data.slice(0,6).forEach(repo=>{
+ data.slice(0,6).forEach(repo=>{
 container.innerHTML+=`
 <div class="project">
 <h3>${repo.name}</h3>
-<p>${repo.description || "DevOps / Software Project"}</p>
+<p>${repo.description||"DevOps Project"}</p>
 <a href="${repo.html_url}" target="_blank">View Repo</a>
 </div>`
 })
